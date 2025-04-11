@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.env
+
+# Docker
+*.log
+*.pid
+
+# Models and MLflow
+mlruns/
+*.pt
+*.pth
+models/
+
+# IDE
+.idea/
+
+# Temp files
+*.swp
+*.swo
+*.tmp
+
+# Keep data files
+!data/*.csv
+
+
+
+#
+#Ignores Python cache, virtual environments, and models (per evaluation criteria).
+#!data/*.csv ensures train.csv and inference.csv are tracked.
+#Excludes .idea/ since you’re using PyCharm.
+#Check: Open .gitignore and confirm it matches the above.
