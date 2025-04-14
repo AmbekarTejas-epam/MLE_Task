@@ -3,14 +3,13 @@ import pandas as pd
 import torch
 import os
 import shutil
-from ..infer import IrisNet, run_inference  # Relative import from inference/
+from ..infer import IrisNet, run_inference
 
 class TestInference(unittest.TestCase):
     def setUp(self):
         self.data_path = 'data/inference.csv'
-        self.model_path = 'models/model.pth'  # Match train.py output
-        self.output_path = '/app/output/predictions.csv'  # Match infer.py save path
-        # Mimic container paths
+        self.model_path = 'models/model.pth'
+        self.output_path = '/app/output/predictions.csv'
         os.makedirs('/app/data', exist_ok=True)
         os.makedirs('/app/models', exist_ok=True)
         os.makedirs('/app/output', exist_ok=True)
@@ -34,10 +33,15 @@ class TestInference(unittest.TestCase):
         self.assertTrue(os.path.exists(self.output_path), "Predictions not saved")
         df = pd.read_csv(self.output_path)
         self.assertIn('predicted', df.columns, "Predictions column missing")
+        # Check additional outputs
+        self.assertTrue(os.path.exists('/app/output/metrics.txt'), "Metrics not saved")
+        self.assertTrue(os.path.exists('/app/output/roc_curve.png'), "ROC curve not saved")
 
     def tearDown(self):
-        if os.path.exists(self.output_path):
-            os.remove(self.output_path)
+        for file in ['predictions.csv', 'metrics.txt', 'roc_curve.png']:
+            path = os.path.join('/app/output', file)
+            if os.path.exists(path):
+                os.remove(path)
         if os.path.exists('/app/data/inference.csv'):
             os.remove('/app/data/inference.csv')
         if os.path.exists('/app/models/model.pth'):
