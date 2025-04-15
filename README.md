@@ -88,10 +88,10 @@ Follow these steps to train the model, run inference, and view results.
 1. **Build and Run Training**:
    ```bash
    docker build -f training/Dockerfile -t iris-train .
-   docker run --rm -v ${PWD}/training/models:/app/models -v ${PWD}/data/:/app/data iris-train
+   docker run --rm -v ${PWD}/models:/app/models -v ${PWD}/data/:/app/data iris-train
    ```
    - Trains `IrisNet` on `train.csv`.
-   - Saves `model.pth` to `training/models/`.
+   - Saves `model.pth` to `models/`.
    - Logs accuracy (~95-98%).
 
 2. **Build and Run Inference**:
