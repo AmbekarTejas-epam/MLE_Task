@@ -9,7 +9,9 @@ class TestTraining(unittest.TestCase):
     def setUp(self):
         """Set up test data and temporary paths."""
         self.data_path = 'data/train.csv'
-        self.model_path = 'models/test_model.pt'
+
+        self.model_path = 'models/model.pth'
+
         # Create temporary /app/data/ and /app/models/ structure to match train.py
         os.makedirs('/app/data', exist_ok=True)
         os.makedirs('/app/models', exist_ok=True)  # Added for model saving

@@ -92,6 +92,8 @@ def train_iris_model():
         # Save model
         os.makedirs('models', exist_ok=True)
         torch.save(model.state_dict(), '/app/models/model.pth')
+
+        torch.save(model.state_dict(), 'models/model.pth')
         logger.info("Model saved to models/model.pth")
 
     except FileNotFoundError as e:
