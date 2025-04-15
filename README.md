@@ -116,7 +116,8 @@ The model achieves ~96.67% accuracy on the test set during training. Inference r
 - **ROC Curve**: Visualizes model performance per class.
 
 **Example ROC Curve**:
-![ROC Curve](inference/output/roc_curve.png)
+  ![ROC Curve](inference/output/roc_curve.png)
+
 *Caption*: ROC curves for each iris class, showing AUC scores near 1, indicating strong performance.
 
 **Example Metrics** (from `metrics.txt`):
